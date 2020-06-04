@@ -2,12 +2,12 @@
 # -*- coding: utf-8 -*-
 # @Time    : 2020/6/3
 # @Author  : Yingke Ding
-# @File    : k_means.py
+# @File    : k_means_algorithm.py
 # @Software: PyCharm
 import csv
 import random
 
-from data_object import DataObject
+from k_means.data_object import DataObject
 
 
 class KMeans:
