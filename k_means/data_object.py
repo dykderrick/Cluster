@@ -7,6 +7,9 @@
 
 
 class DataObject:
+    """
+    General data structure for recording iris features and predicted class labels.
+    """
     def __init__(self, point):
         self._point = point
         self._class_number = None
@@ -21,6 +24,12 @@ class DataObject:
         return self._point
 
     def euclidean_distance(self, centroid_point):
+        """
+        This method will calculate the euclidean distance between the current data_object and another point.
+        Particularly, the other point will be centroid because we want to get one point's neighbour in k-means.
+        :param centroid_point: a list of 4 values (4 dimensional vector)
+        :return:
+        """
         if len(self._point) != len(centroid_point):
             raise Exception("ERROR DIMENSION")
 

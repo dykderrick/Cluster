@@ -8,7 +8,10 @@ from DBSCAN.DBSCAN_algorithm import DBSCAN
 
 
 def main():
-    DBSCAN(csv_file_path="../dataset/Iris.csv", radius=0.39, min_pts=4).algorithm()
+    algorithm_object = DBSCAN(csv_file_path="../dataset/Iris.csv", radius=1., min_pts=5)
+
+    algorithm_object.algorithm()
+    algorithm_object.print_cluster_result()
 
 
 if __name__ == '__main__':

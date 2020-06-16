@@ -11,17 +11,26 @@ from k_means.data_object import DataObject
 
 
 def _calculate_centroid(points, dimension):
+    """
+    Centroid is the average point for a set of points.
+    :param points: a list of 4-dimensional list
+    :param dimension: 4 for iris dataset
+    :return: a 4 dimensional list
+    """
     return [sum(point[i] for point in points) / len(points) for i in range(dimension)]
 
 
 class KMeans:
+    """
+    Object for k-means algorithm.
+    """
     def __init__(self, k, csv_file_path="../dataset/Iris.csv"):
         self._k = k
         self._data_objects = []
         self._results = None
         self._scan_dataset(csv_file_path)
-        self._original_data_objects = self._data_objects.copy()
-        self._shuffle_data_objects()
+        self._original_data_objects = self._data_objects.copy()  # keep records of original
+        self._shuffle_data_objects()  # shuffle
 
     def _scan_dataset(self, csv_file_path):
         with open(csv_file_path, "r") as csv_file:
@@ -31,6 +40,11 @@ class KMeans:
                 self._data_objects.append(DataObject([float(i) for i in row[:-1]]))
 
     def _shuffle_data_objects(self):
+        """
+        data_objects should be shuffled because we want to have a random class partition
+        for the first step of k-means algorithm.
+        :return: None
+        """
         random.shuffle(self._data_objects)
 
     def algorithm(self):
@@ -62,11 +76,6 @@ class KMeans:
 
             if unexpected_bug:
                 break
-            """
-            centroids = [self._calculate_centroid(
-                points=[point.get_point() for point in self._data_objects if point.get_class_number() == i],
-                dimension=4) for i in range(self._k)]
-            """
 
             change_class_number = False
             for data_object in self._data_objects:
@@ -86,6 +95,10 @@ class KMeans:
             self._results = self._data_objects
 
     def print_cluster_result(self):
+        """
+        Compare the results with original.
+        :return:
+        """
         for index, data_object in enumerate(self._original_data_objects):
             print(self._results[self._results.index(data_object)].get_point())
             print(self._results[self._results.index(data_object)].get_class_number())
