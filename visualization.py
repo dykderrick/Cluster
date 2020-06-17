@@ -14,8 +14,8 @@ from k_means.k_means_algorithm import KMeans
 CSV_FILE_PATH = "../dataset/Iris.csv"
 
 
-def main(algorithm):
-    if algorithm == 'KMeans':
+def main(algorithm_name):
+    if algorithm_name == 'KMeans':
         algorithm_object = KMeans(CSV_FILE_PATH, k=3)
         algorithm_object.algorithm()
         results = algorithm_object.get_results()
@@ -34,7 +34,7 @@ def main(algorithm):
 
     fig = plt.figure()
     ax = Axes3D(fig)
-    colors = ['red', 'blue', 'green', 'black', 'white', 'yellow', 'lime', 'cyan', 'orange', 'gray']
+    colors = ['red', 'blue', 'green', 'black', 'lime', 'yellow', 'white', 'cyan', 'orange', 'gray']
 
     for index, class_features in enumerate(feature_class_dicts):
         all_features = list(class_features.values())[0]
@@ -48,9 +48,10 @@ def main(algorithm):
         else:
             color = colors[index]
         ax.scatter(xs, ys, zs, c=color)
-        # plt.scatter(xs, ys, c=color)
 
-    fig.savefig('../figures/' + algorithm + '_classified.svg', format='svg')
+    plt.title(algorithm_name + " Cluster Results", fontweight='bold')
+
+    fig.savefig('../figures/' + algorithm_name + '_classified.eps', format='eps')
 
 
 if __name__ == '__main__':
