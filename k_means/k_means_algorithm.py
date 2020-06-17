@@ -55,26 +55,20 @@ class KMeans:
 
         while has_changed:
             centroids = []
-            unexpected_bug = False
+            unexpected_shuffle = False
             for i in range(self._k):
                 points = [point.get_point() for point in self._data_objects if point.get_class_number() == i]
 
-                # 这个bug我真不知道错哪, 大概平均每10次运行会出现一次
-                # 正常有bug都是每次运行都会有, 但是这个就非常神奇, 玄学
-                # self._data_objects里面class_number不知道为什么被篡改
-                # 导致丢失某个类别的所有标签, 后面算centroids会找不到某个类别的点
-                # 换句话说, 本来k=3的算法被强行改成k=2了
-                # 这简直就是降维打击
-                # 如果您知道bug出自哪里, 欢迎issue或email: dykderrick@bupt.edu.cn
-                # 这里我不得不重新来一遍算法
+                # Shuffle not suitable if cannot get a set of points
+                # Will re-invoke the whole program
                 if len(points) == 0:
-                    unexpected_bug = True
+                    unexpected_shuffle = True
                     break
 
                 centroid = _calculate_centroid(points, 4)
                 centroids.append(centroid)
 
-            if unexpected_bug:
+            if unexpected_shuffle:
                 break
 
             change_class_number = False

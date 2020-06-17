@@ -8,10 +8,11 @@ from k_means.k_means_algorithm import KMeans
 
 
 def main():
-    algorithm_object = KMeans(k=3, csv_file_path="../dataset/Iris.csv")
+    for i in range(100):
+        algorithm_object = KMeans(k=3, csv_file_path="../dataset/Iris.csv")
 
-    algorithm_object.algorithm()
-    algorithm_object.print_cluster_result()
+        algorithm_object.algorithm()
+        algorithm_object.print_cluster_result()
 
 
 if __name__ == '__main__':
