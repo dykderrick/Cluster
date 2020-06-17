@@ -25,7 +25,10 @@ def main(algorithm):
     features = pd.DataFrame([result.get_point() for result in results])
     classes = pd.DataFrame([result.get_class_number() for result in results])
 
-    feature_class_dicts = [{class_number: [feature for index, feature in enumerate(features.values.tolist()) if classes.values[index][0] == class_number]} for class_number in set(np.unique(classes.values))]
+    feature_class_dicts = [
+        {class_number: [feature for index, feature in enumerate(features.values.tolist())
+                        if classes.values[index][0] == class_number]} for class_number in set(np.unique(classes.values))
+    ]
 
     fig = plt.figure()
     ax = Axes3D(fig)
