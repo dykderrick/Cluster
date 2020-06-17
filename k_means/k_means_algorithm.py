@@ -24,10 +24,10 @@ class KMeans:
     """
     Object for k-means algorithm.
     """
-    def __init__(self, k=3, csv_file_path="../dataset/Iris.csv"):
+
+    def __init__(self, csv_file_path="../dataset/Iris.csv", k=3):
         self._k = k
         self._data_objects = []
-        self._results = None
         self._scan_dataset(csv_file_path)
         self._original_data_objects = self._data_objects.copy()  # keep records of original
         self._shuffle_data_objects()  # shuffle
@@ -85,19 +85,6 @@ class KMeans:
         if has_changed:  # 重来
             self.__init__(self._k)
             self.algorithm()
-        else:
-            self._results = self._data_objects
-
-    def print_cluster_result(self):
-        """
-        Compare the results with original.
-        :return:
-        """
-        for index, data_object in enumerate(self._original_data_objects):
-            print('INDEX       ' + str(index))
-            print('FEATURES    ' + str(data_object.get_point()))
-            print('CLUSTER NO. ' + str(data_object.get_class_number()))
-            print('\n')
 
     def get_results(self):
-        return self._results
+        return self._original_data_objects

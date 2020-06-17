@@ -11,14 +11,16 @@ from mpl_toolkits.mplot3d import Axes3D
 from DBSCAN.DBSCAN_algorithm import DBSCAN
 from k_means.k_means_algorithm import KMeans
 
+CSV_FILE_PATH = "../dataset/Iris.csv"
+
 
 def main(algorithm):
     if algorithm == 'KMeans':
-        algorithm_object = KMeans(k=3, csv_file_path="../dataset/Iris.csv")
+        algorithm_object = KMeans(CSV_FILE_PATH, k=3)
         algorithm_object.algorithm()
         results = algorithm_object.get_results()
     else:
-        algorithm_object = DBSCAN("../dataset/Iris.csv", radius=1.375, min_pts=5)
+        algorithm_object = DBSCAN(CSV_FILE_PATH, radius=1.375, min_pts=5)
         algorithm_object.algorithm()
         results = algorithm_object.get_results()
 

@@ -18,7 +18,6 @@ class DBSCAN:
         self._radius = radius
         self._min_pts = min_pts
         self._data_objects = []
-        self._results = None
         self._scan_dataset(csv_file_path)
         self._original_data_objects = self._data_objects.copy()
 
@@ -88,14 +87,5 @@ class DBSCAN:
             unvisited_data_objects = self._get_unvisited_objects()
             random.shuffle(unvisited_data_objects)
 
-        self._results = self._data_objects
-
-    def print_cluster_result(self):
-        for index, data_object in enumerate(self._original_data_objects):
-            print('INDEX       ' + str(index))
-            print('FEATURES    ' + str(data_object.get_point()))
-            print('CLUSTER NO. ' + str(data_object.get_class_number()))
-            print('\n')
-
     def get_results(self):
-        return self._results
+        return self._original_data_objects
