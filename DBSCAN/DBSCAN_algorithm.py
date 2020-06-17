@@ -14,7 +14,7 @@ class DBSCAN:
     """
     Object for DBSCAN algorithm,
     """
-    def __init__(self, csv_file_path, radius, min_pts):
+    def __init__(self, csv_file_path="../dataset/Iris.csv", radius=1.375, min_pts=5):
         self._radius = radius
         self._min_pts = min_pts
         self._data_objects = []
@@ -95,3 +95,6 @@ class DBSCAN:
             print(self._results[self._results.index(data_object)].get_point())
             print(self._results[self._results.index(data_object)].get_class_number())
             print("\n")
+
+    def get_results(self):
+        return self._results

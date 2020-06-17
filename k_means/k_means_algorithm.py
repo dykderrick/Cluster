@@ -24,7 +24,7 @@ class KMeans:
     """
     Object for k-means algorithm.
     """
-    def __init__(self, k, csv_file_path="../dataset/Iris.csv"):
+    def __init__(self, k=3, csv_file_path="../dataset/Iris.csv"):
         self._k = k
         self._data_objects = []
         self._results = None
@@ -103,3 +103,6 @@ class KMeans:
             print(self._results[self._results.index(data_object)].get_point())
             print(self._results[self._results.index(data_object)].get_class_number())
             print("\n")
+
+    def get_results(self):
+        return self._results
