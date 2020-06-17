@@ -83,7 +83,7 @@ class DBSCAN:
             else:
                 # noise
                 current_data_object.mark_noise()
-                current_data_object.set_class_number(-1)  # -1 means noise
+                current_data_object.set_class_number(666)  # 666 means noise
 
             unvisited_data_objects = self._get_unvisited_objects()
             random.shuffle(unvisited_data_objects)
@@ -92,9 +92,10 @@ class DBSCAN:
 
     def print_cluster_result(self):
         for index, data_object in enumerate(self._original_data_objects):
-            print(self._results[self._results.index(data_object)].get_point())
-            print(self._results[self._results.index(data_object)].get_class_number())
-            print("\n")
+            print('INDEX       ' + str(index))
+            print('FEATURES    ' + str(data_object.get_point()))
+            print('CLUSTER NO. ' + str(data_object.get_class_number()))
+            print('\n')
 
     def get_results(self):
         return self._results

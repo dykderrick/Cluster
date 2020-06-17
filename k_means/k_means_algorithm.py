@@ -100,9 +100,10 @@ class KMeans:
         :return:
         """
         for index, data_object in enumerate(self._original_data_objects):
-            print(self._results[self._results.index(data_object)].get_point())
-            print(self._results[self._results.index(data_object)].get_class_number())
-            print("\n")
+            print('INDEX       ' + str(index))
+            print('FEATURES    ' + str(data_object.get_point()))
+            print('CLUSTER NO. ' + str(data_object.get_class_number()))
+            print('\n')
 
     def get_results(self):
         return self._results
