@@ -1,7 +1,7 @@
 # Cluster
 BUPT Information Processing Coursework 3 - Using K Means and DBSCAN Algorithms to Cluster Iris Dataset
 ## Dataset
-[`Groceries.csv`](dataset/Iris.csv) contains information about iris. Dataset collected by UCI.
+[`Iris.csv`](dataset/Iris.csv) contains information about iris. Dataset collected by UCI.
 ## Usage
 ```commandline
 python3 run_algorithms.py
